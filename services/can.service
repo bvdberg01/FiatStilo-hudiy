@@ -1,0 +1,14 @@
+[Unit]
+Description=Init MCP2515 CAN-interface
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStartPre=-/sbin/ip link set can0 down
+ExecStart=/sbin/ip link set can0 type can bitrate 50000
+ExecStart=/sbin/ip link set can0 up
+ExecStop=/sbin/ip link set can0 down
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
