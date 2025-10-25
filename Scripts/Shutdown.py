@@ -21,7 +21,7 @@ def check_shutdown():
     print(GPIO.input(24))
     if (GPIO.input(24) == 1) and (time.time() - start_time >= 5):
         print("Shutdown")
-	os.system("sudo shutdown -h now");
+        os.system("sudo shutdown -h now")
 
 # Set up an event on the GPIO pin to call the function when the pin goes high
 GPIO.add_event_detect(24, GPIO.RISING, callback=shutdown, bouncetime=200)
