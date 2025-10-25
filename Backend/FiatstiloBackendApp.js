@@ -236,7 +236,7 @@ channel.addListener("onMessage", function(msg){
     }
 
     if(msg.id == 0x180){
-        const data = fs.readFileSync('/home/pi/shared/settings/data.json');
+        const data = fs.readFileSync('/home/stilo/FiatStilo-hudiy/Backend/data.json');
         const parsedData = JSON.parse(data);
         io.emit('brightnessstatus', parsedData)
         if((msg.data.readUIntBE(1,1) & 0b00001000) == 8){
@@ -334,7 +334,7 @@ io.on('connection', function(socket){
         }
         
         var data = { BrightnessOff: msg.BrightnessOff, BrightnessOn: msg.BrightnessOn};
-        fs.writeFileSync('/home/pi/shared/settings/data.json', JSON.stringify(data));
+        fs.writeFileSync('/home/stilo/FiatStilo-hudiy/Backend/data.json', JSON.stringify(data));
         
     });
 
@@ -349,7 +349,7 @@ function pad(d) {
 }
 
 function brightness(value) {
-    spawn('python3', ['/home/pi/shared/settings/brightness.py', value]);
+    spawn('python3', ['/home/stilo/FiatStilo-hudiy/Backend/brightness.py', value]);
 }
 
 channel.start()
