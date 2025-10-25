@@ -1,0 +1,9 @@
+[Unit]
+Description=Shutdown PI on acc off
+After=multi-user.target
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python /home/stilo/FiatStilo-hudiy/Scripts/Shutdown.py
+[Install]
+WantedBy=multi-user.target
