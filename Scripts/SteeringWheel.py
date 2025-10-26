@@ -1,6 +1,8 @@
 import can
 import threading
 import common.Api_pb2 as api
+import subprocess
+import re
 from common.Client import Client, ClientEventHandler
 
 bus = can.Bus(interface='socketcan',
@@ -8,6 +10,38 @@ bus = can.Bus(interface='socketcan',
               receive_own_messages=True)
 
 bus.set_filters([{"can_id": 0x3C4, "can_mask": 0xFFF, "extended": False}])
+
+STEP = 5
+
+def get_volume():
+    """Huidig volume uitlezen als percentage."""
+    try:
+        out = subprocess.check_output(["amixer", "get", "Master"], text=True)
+    except subprocess.CalledProcessError:
+        return None
+    m = re.search(r"(\d{1,3})%\]", out)
+    if m:
+        return int(m.group(1))
+    return None
+
+def set_volume(pct):
+    """Volume zetten tussen 0-100%."""
+    pct = max(0, min(100, int(pct)))
+    subprocess.run(["amixer", "set", "Master", f"{pct}%"])
+
+def increase_volume():
+    v = get_volume()
+    if v is None: return
+    new = min(100, v + STEP)
+    set_volume(new)
+    print(f"Volume ↑: {v}% -> {new}%")
+
+def decrease_volume():
+    v = get_volume()
+    if v is None: return
+    new = max(0, v - STEP)
+    set_volume(new)
+    print(f"Volume ↓: {v}% -> {new}%")
 
 def listen_for_key_events(client):
     for msg in bus:
@@ -50,12 +84,12 @@ def listen_for_key_events(client):
 
             # volume down
             if msg.data[0] == 66:
-                key_type = api.KeyEvent.KEY_TYPE_VOLUME_DOWN
+                decrease_volume()
 
 
             # volume up
             if msg.data[0] == 130:
-                key_type = api.KeyEvent.KEY_TYPE_VOLUME_UP
+                increase_volume()
 
 
         if key_type is not None:
