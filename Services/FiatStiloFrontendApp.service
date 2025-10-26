@@ -4,7 +4,7 @@ After=multi-user.target
 [Service]
 Type=idle
 Restart=always
-ExecStart=serve /home/stilo/Scripts/FiatStiloApp/
+ExecStart=serve /home/stilo/FiatStilo-hudiy/Frontend/
 User=stilo
 [Install]
 WantedBy=multi-user.target
