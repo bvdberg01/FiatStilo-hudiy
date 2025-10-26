@@ -4,6 +4,6 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/python /home/stilo/FiatStilo-hudiy/Scripts/Shutdown.py
+ExecStart=/usr/bin/python /home/stilo/FiatStilo-hudiy/Scripts/FiatStiloShutdown.py
 [Install]
 WantedBy=multi-user.target

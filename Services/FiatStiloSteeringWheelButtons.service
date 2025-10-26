@@ -4,7 +4,7 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/bin/sh -c "/usr/bin/python3 /home/stilo/FiatStilo-hudiy/Scripts/SteeringWheelButtons.py"
+ExecStart=/bin/sh -c "/usr/bin/python3 /home/stilo/FiatStilo-hudiy/Scripts/FiatStiloSteeringWheelButtons.py"
 User=stilo
 [Install]
 WantedBy=multi-user.target

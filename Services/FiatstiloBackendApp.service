@@ -4,7 +4,7 @@ After=multi-user.target
 [Service]
 Type=idle
 Restart=always
-ExecStart=node /home/stilo/FiatStilo-hudiy/Backend/FiatstiloBackendApp.js
+ExecStart=node /home/stilo/FiatStilo-hudiy/Backend/FiatStiloBackendApp.js
 User=stilo
 [Install]
 WantedBy=multi-user.target
