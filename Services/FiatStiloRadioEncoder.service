@@ -4,7 +4,7 @@ After=multi-user.target
 [Service]
 Type=idle
 Restart=always
-ExecStart=/bin/sh -c "/usr/bin/python3 /home/stilo/FiatStilo-hudiy/Scripts/FiatStiloRadioEncoders.py"
+ExecStart=/bin/sh -c "/home/stilo/FiatStilo-hudiy/Scripts/venv/bin/python3 /home/stilo/FiatStilo-hudiy/Scripts/FiatStiloRadioEncoders.py"
 User=stilo
 [Install]
 WantedBy=multi-user.target
