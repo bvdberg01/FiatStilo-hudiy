@@ -163,7 +163,7 @@ class EventHandler(ClientEventHandler):
             data["PhoneCharacterValidData"] = 0
 
 def run_can_communication():
-    bus = can.interface.Bus(channel='can0', bustype='socketcan')
+    bus = can.interface.Bus(channel='can0', interface='socketcan')
     msg = can.Message(arbitration_id=0x5C7, data=[0, 0, 0, 0, 0, 0, 0, 0], is_extended_id=False)
 
     def send_message(counter):

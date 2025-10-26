@@ -149,7 +149,7 @@ class EventHandler(ClientEventHandler):
         # message.artist, message.title, message.album,message.duration_label
 
 def run_can_communication():
-    bus = can.interface.Bus(channel='can0', bustype='socketcan')
+    bus = can.interface.Bus(channel='can0', interface='socketcan')
     msg = can.Message(arbitration_id=0x545, data=[0, 0, 0, 0, 0, 0], is_extended_id=False)
 
     def create_message():
