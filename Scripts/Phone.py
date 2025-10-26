@@ -67,7 +67,6 @@ dictionary = {
     "\n": 0b111111
 }
 
-
 data = {
     "TotalFrameNumber": 2,
     "FrameNumber": 0,
@@ -146,7 +145,6 @@ class EventHandler(ClientEventHandler):
 
             data["PhoneCharacterValidData"] = 1
 
-
         if(message.state == 1):
             if(message.caller_name == "(Unknown Caller)"):
                 splitnameorphone(message.caller_id)
@@ -163,8 +161,6 @@ class EventHandler(ClientEventHandler):
 
             data["PhoneCallSts"] = 1
             data["PhoneCharacterValidData"] = 0
-
-
 
 def run_can_communication():
     bus = can.interface.Bus(channel='can0', bustype='socketcan')
@@ -221,7 +217,6 @@ def run_can_communication():
         send_message(0)
         time.sleep(1)
 
-
 def run_bluewave_client():
     client = Client("phone status example")
     event_handler = EventHandler()
@@ -236,7 +231,6 @@ def run_bluewave_client():
             break
 
     client.disconnect()
-
 
 if __name__ == "__main__":
     can_thread = threading.Thread(target=run_can_communication)
