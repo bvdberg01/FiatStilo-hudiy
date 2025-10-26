@@ -1,0 +1,10 @@
+[Unit]
+Description=Fiat Stilo Radio Buttons Service
+After=multi-user.target
+[Service]
+Type=idle
+Restart=always
+ExecStart=/bin/sh -c "/usr/bin/python3 /home/stilo/FiatStilo-hudiy/Scripts/RadioButtons.py"
+User=stilo
+[Install]
+WantedBy=multi-user.target
