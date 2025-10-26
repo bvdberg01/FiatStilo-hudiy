@@ -67,7 +67,6 @@ dictionary = {
     "\n": 0b111111
 }
 
-
 RadioData = {
     "AudioSource": 0,
     "Band": 0,
@@ -142,15 +141,12 @@ class EventHandler(ClientEventHandler):
         else:
             RadioData["RadioDisplayInfoValidData"] = 1
         
-
     def on_media_metadata(self, client, message):
         if message.title.find("MHz") != -1:
             test = format_freq(message.title)
             # print(test)
             frequentie_naar_hex(test)
         # message.artist, message.title, message.album,message.duration_label
-
-
 
 def run_can_communication():
     bus = can.interface.Bus(channel='can0', bustype='socketcan')
@@ -185,7 +181,6 @@ def run_can_communication():
             create_message()
             time.sleep(0.5)
 
-
 def run_bluewave_client():
     client = Client("phone status example")
     event_handler = EventHandler()
@@ -200,7 +195,6 @@ def run_bluewave_client():
             break
 
     client.disconnect()
-
 
 if __name__ == "__main__":
     can_thread = threading.Thread(target=run_can_communication)
