@@ -1,0 +1,10 @@
+[Unit]
+Description=FiatStiloFrontend app
+After=multi-user.target
+[Service]
+Type=idle
+Restart=always
+ExecStart=serve /home/stilo/Scripts/FiatStiloApp/
+User=stilo
+[Install]
+WantedBy=multi-user.target
