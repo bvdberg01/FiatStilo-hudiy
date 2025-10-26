@@ -349,7 +349,7 @@ function pad(d) {
 }
 
 function brightness(value) {
-    spawn('python3', ['/home/stilo/FiatStilo-hudiy/Backend/brightness.py', value]);
+    spawn('python3', ['/home/stilo/FiatStilo-hudiy/Scripts/FiatStiloDisplayBrightness.py', value]);
 }
 
 channel.start()
