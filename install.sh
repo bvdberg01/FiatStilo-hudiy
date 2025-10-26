@@ -11,7 +11,7 @@ SCRIPTS_DIR="/home/stilo/FiatStilo-hudiy/Scripts"
 cd "$SCRIPTS_DIR"
 python3 -m venv venv
 source venv/bin/activate
-pip install protobuf websocket-client python-can
+pip install protobuf websocket-client python-can Rpi.GPIO
 
 for service in "$SERVICE_DIR"/*.service; do
     if [ -f "$service" ]; then
