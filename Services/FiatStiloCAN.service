@@ -1,5 +1,5 @@
 [Unit]
-Description=Init MCP2515 CAN-interface
+Description=FiatStilo Init MCP2515 CAN-interface
 After=network.target
 
 [Service]
