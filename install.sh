@@ -7,11 +7,15 @@ sudo npm install -g serve
 
 SERVICE_DIR="/home/stilo/FiatStilo-hudiy/Services"
 SCRIPTS_DIR="/home/stilo/FiatStilo-hudiy/Scripts"
+BACKEND_DIR="/home/stilo/FiatStilo-hudiy/FiatStiloBackendApp"
 
 cd "$SCRIPTS_DIR"
 python3 -m venv venv
 source venv/bin/activate
 pip install protobuf websocket-client python-can Rpi.GPIO
+
+cd "$BACKEND_DIR"
+npm install
 
 for service in "$SERVICE_DIR"/*.service; do
     if [ -f "$service" ]; then
